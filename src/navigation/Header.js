@@ -1,11 +1,11 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom';
  function Header({welcomeMessage, clickToEnter}) {
     return (
-        <div>
+        <nav>
             <h1>Welcome To The World Of {welcomeMessage}</h1>
-            <button>{clickToEnter}</button>
-        </div>
+           <Link to='/home'>{clickToEnter}</Link> 
+        </nav>
     )
 }
 

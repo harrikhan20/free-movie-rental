@@ -3,6 +3,12 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Header from '../navigation/Header';
 import Navbar from './Navbar';
 import Home from './Home';
+import movies from '../containers/movies';
+import {useState, useEffect} from 'react';
+
+useEffect(() => {
+  fetchData()
+}, [input])
 
 
 function App() {
@@ -10,11 +16,15 @@ function App() {
     <div className="App">
       <Router>
         <Navbar />
-        <Header welcomeMessage="Free Movies"
-        clickToEnter="Click To Continue" />
+       
         <Switch>
-          <Route path="/">
-            <Home />
+          <Route exact path="/">
+           <Header welcomeMessage="Free Movies"
+        clickToEnter="Click To Enter!" />
+        </Route>
+          <Route exact path="/home">
+            <Home movies={movies}/>
+            
 
           </Route>
         </Switch>
@@ -22,5 +32,5 @@ function App() {
     </div>
   );;
 }
-
+console.log(movies);
 export default App;
