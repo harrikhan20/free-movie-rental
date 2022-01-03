@@ -1,9 +1,16 @@
-import React from 'react'
+import React from 'react';
 
- function Home() {
+
+ function Home({movies}) {
+const mappedMovies = movies.map(movie => <li key={movie.id}>{movie.title}</li>)
+
     return (
-        <div>
+        <div id="">
             <h1>Please Choose The Movie You Want To Order</h1>
+
+            {mappedMovies}
+
+            
         </div>
     )
 }

@@ -6,12 +6,22 @@ import Home from './Home';
 import movies from '../containers/movies';
 import {useState, useEffect} from 'react';
 
-useEffect(() => {
-  fetchData()
-}, [input])
+
 
 
 function App() {
+
+const [movies, setMovies] = useState([])
+
+useEffect(() => {
+  fetch('http://localhost:3001/Movies')
+  .then(res => res.json())
+  .then(data => setMovies(data))
+}, [])
+
+
+
+
   return (
     <div className="App">
       <Router>
@@ -23,7 +33,7 @@ function App() {
         clickToEnter="Click To Enter!" />
         </Route>
           <Route exact path="/home">
-            <Home movies={movies}/>
+            <Home movies={movies} />
             
 
           </Route>
@@ -32,5 +42,5 @@ function App() {
     </div>
   );;
 }
-console.log(movies);
+
 export default App;
