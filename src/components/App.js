@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import Home from './Home';
 import movies from '../containers/movies';
 import {useState, useEffect} from 'react';
+import MovieSummary from './MovieSummary';
 
 
 
@@ -14,7 +15,7 @@ function App() {
 const [movies, setMovies] = useState([])
 
 useEffect(() => {
-  fetch('http://localhost:3001/Movies')
+  fetch('http://localhost:3001/movies')
   .then(res => res.json())
   .then(data => setMovies(data))
 }, [])
@@ -33,10 +34,9 @@ useEffect(() => {
         clickToEnter="Click To Enter!" />
         </Route>
           <Route exact path="/home">
-            <Home movies={movies} />
-            
-
+            <Home movies={movies} title={movies.title}/>
           </Route>
+         
         </Switch>
       </Router>
     </div>
