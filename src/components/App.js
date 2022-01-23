@@ -6,6 +6,8 @@ import Home from './Home';
 import movies from '../containers/movies';
 import {useState, useEffect} from 'react';
 import MovieSummary from './MovieSummary';
+import AddMovieForm from './AddMovieForm';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 
@@ -13,6 +15,8 @@ import MovieSummary from './MovieSummary';
 function App() {
 
 const [movies, setMovies] = useState([])
+
+const history = useHistory()
 
 useEffect(() => {
   fetch('http://localhost:3001/movies')
@@ -23,18 +27,44 @@ useEffect(() => {
 
 
 
+function addMovie(newMovie) {
+  fetch('http://localhost:3001/movies', {
+    method: 'POST', 
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newMovie) 
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log(data)
+    setMovies([...movies, data])
+    history.push('/')
+  })
+  
+}
+
+
+
+
   return (
     <div className="App">
       <Router>
         <Navbar />
-       
+      
         <Switch>
           <Route exact path="/">
            <Header welcomeMessage="Free Movies"
         clickToEnter="Click To Enter!" />
         </Route>
+        <Route exact path="/About">
+          <About AboutMessage="I have created this website simply because of my love for movies! People have the 
+          right to post as much movies as they want. "/>
+
+        </Route>
           <Route exact path="/home">
             <Home movies={movies} title={movies.title}/>
+          </Route>
+          <Route exact path = "/movies/new">
+            <AddMovieForm addMovie={addMovie}/>
           </Route>
          
         </Switch>
