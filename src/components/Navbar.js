@@ -40,7 +40,7 @@ const style = {
             }}
             exact
             style={style}
-            to="/"
+            to="/about"
 
             >About</NavLink>
 

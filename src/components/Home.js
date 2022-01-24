@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
  function Home({movies}) {
-const mappedMovies = movies.map(movies =>  <MovieSummary key={movies.id} movies={movies} title={movies.title}/>)
+const mappedMovies = movies.map(movies =>  <MovieSummary key={movies.id} movies={movies} summary={movies.summary} />)
 
     return (
         <div id="">
@@ -13,7 +13,7 @@ const mappedMovies = movies.map(movies =>  <MovieSummary key={movies.id} movies=
             {mappedMovies}
 
             <br/>
-            
+
             <Link to='/movies/new'>Add A Movie For Others To Rent</Link>
 
             
