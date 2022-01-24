@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 
-function MovieSummary({movies}) {
+function MovieSummary({movies, rentLink}) {
     const [show, visible] = useState(false)
 
    function deleteMovie(id) {
@@ -19,7 +19,7 @@ function MovieSummary({movies}) {
         })
         window.location.reload();
         
-      
+      <h1>{rentLink}</h1>
       
      }
 
@@ -34,8 +34,8 @@ function MovieSummary({movies}) {
 
             <button onClick={()=> visible(true)}>View Summary</button>
             <button onClick={()=> visible(false)}>hide Summary</button>
-            <button onClick={() => deleteMovie(movies.id)}>Delete Review</button>
-            <button><Link></Link>Rent This Movie </button>
+            <button onClick={() => deleteMovie(movies.id)}>Delete Movie</button>
+            <Link to="/movies/rent"> Download This Movie </Link>
             
             
         </div>

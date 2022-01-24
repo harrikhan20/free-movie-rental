@@ -4,12 +4,10 @@ import Header from '../navigation/Header';
 import Navbar from './Navbar';
 import Home from './Home';
 import {useState, useEffect} from 'react';
-import MovieSummary from './MovieSummary';
 import AddMovieForm from './AddMovieForm';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import About from '../navigation/About';
-import { getMouseEventOptions } from '@testing-library/user-event/dist/utils';
-
+import RentLinkForm from './RentLinkForm';
 
 
 
@@ -61,8 +59,8 @@ function addMovie(newMovie) {
         clickToEnter="Click To Enter!" />
         </Route>
         <Route exact path="/about">
-          <About AboutMessage="I have created this website simply because of my love for movies! People have the 
-          right to rent and post as much movies as they want. Each rental will cost you........ $0!! FREE! FREE! FREE! "/>
+          <About AboutMessage="I have created this website simply because of my love for movies. People have the 
+          right to download and post as much movies as they want. Each Movie will cost you........ $0 to download! FREE! FREE! FREE! "/>
 
         </Route>
           <Route exact path="/home">
@@ -71,7 +69,9 @@ function addMovie(newMovie) {
           <Route exact path = "/movies/new">
             <AddMovieForm addMovie={addMovie}/>
           </Route>
-          
+          <Route exact path = "/movies/rent">
+            <RentLinkForm/>
+          </Route>
         </Switch>
       </Router>
     </div>
