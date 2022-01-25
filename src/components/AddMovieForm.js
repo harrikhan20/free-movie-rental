@@ -39,7 +39,7 @@ import React, {useState} from 'react';
             <input type="submit" value="Add The Movie To The List" />
 
             
-<h1>adding a new movie to the website</h1>
+
 
 
         </form>
